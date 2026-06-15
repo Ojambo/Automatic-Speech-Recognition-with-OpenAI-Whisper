@@ -1,0 +1,16 @@
+version: "3"
+services:
+  whisper:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - whisper-model-cache:/root/.cache/whisper
+    working_dir: /app
+    restart: unless-stopped
+    command: ["python", "app.py"]
+
+volumes:
+  whisper-model-cache:
+
